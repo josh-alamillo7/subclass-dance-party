@@ -29,13 +29,11 @@ $(document).ready(function() {
     );
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
-    console.log(window.dancers);
   });
   
   
   $('.button').on('click', function(event) {
     window.dancers.forEach(function(dancer) {
-      console.log('dancer');
       dancer.lineUp();
     });
   

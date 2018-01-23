@@ -3,13 +3,14 @@ var FrootLoop = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.color = 'yellow';
   this.size = 10;
-  this.$node.css({'height': JSON.stringify(10) + 'px'});
-  this.$node.css({'width': JSON.stringify(10) + 'px'});
+  this.$node.css({'height': '10px'});
+  this.$node.css({'width': '10px'});
   this.$node.css({'border': '10px solid yellow'});
 
 };
 
 FrootLoop.prototype = Object.create(Dancer.prototype);
+FrootLoop.prototype.constructor = FrootLoop;
 
 FrootLoop.prototype.step = function() {
   // call the old version of step at the beginning of any call to this new version of step
@@ -21,8 +22,16 @@ FrootLoop.prototype.step = function() {
   Dancer.prototype.step.call(this);
   //setTimeout(this.step.bind(this), this.timeBetweenSteps);
   //this needs to be changed
-  vertFlag = negFlag();
-  horizFlag = negFlag();
+  
+  this.randomMove();
+  this.setPosition();
+  this.resize();
+  this.changeColor();  
+};
+
+FrootLoop.prototype.randomMove = function() {
+  vertFlag = randBoolean();
+  horizFlag = randBoolean();
   
 
   if (vertFlag) {
@@ -35,21 +44,17 @@ FrootLoop.prototype.step = function() {
   } else {
     this.left = this.left - 10;
   }
-
-  this.setPosition();
-  this.resize();
-  this.changeColor();  
 };
 
 FrootLoop.prototype.resize = function() {
-  sizeFlag = negFlag();
+  var sizeFlag = randBoolean();
   if (sizeFlag) {
     this.size = this.size + 5;
   } else if (this.size > 0) {
     this.size = this.size - 5;
   }
-  this.$node.css({'height': JSON.stringify(this.size) + 'px'});
-  this.$node.css({'width': JSON.stringify(this.size) + 'px'});
+  this.$node.css({'height': this.size + 'px'});
+  this.$node.css({'width': this.size + 'px'});
 };
 
 FrootLoop.prototype.changeColor = function() {
@@ -62,7 +67,7 @@ FrootLoop.prototype.lineUp = function() {
   this.left = 0;
 };
 
-negFlag = function() {
+randBoolean = function() {
   num = Math.random();
   if (num > 0.49) {
     return true;
