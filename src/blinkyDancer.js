@@ -18,7 +18,12 @@ BlinkyDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
   //setTimeout(this.step.bind(this), this.timeBetweenSteps);
   //this needs to be changed
+  this.setPosition();
   this.$node.toggle();
+};
+
+BlinkyDancer.prototype.lineUp = function() {
+  this.top = 0;
 };
 
 

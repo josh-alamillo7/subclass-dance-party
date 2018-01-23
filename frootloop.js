@@ -5,8 +5,8 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="lib/jquery.js"></script>
     <script src="src/dancer.js"></script>
-    <script src="src/FrootLoop.js"></script>
-    <script src="src/blinkyDancer.js"></script>
+    <script src="src/frootLoop.js"></script>
+    <script src="src/chameleonDancer.js"></script>
   </head>
   <body>
     <div class="topbar">
