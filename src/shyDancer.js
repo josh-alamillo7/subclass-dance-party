@@ -43,12 +43,11 @@ ShyDancer.prototype.findNearestNeighbors = function() {
     var distance = Math.sqrt(Math.pow((dancer.left - left), 2) + Math.pow((dancer.top - top), 2));
     return distance <= 150;
   });
-  console.log(closeDancers.length);
-  return closeDancers.length;
+  return closeDancers.length - 1;
 };
 
 ShyDancer.prototype.changeSize = function(neighbors) {
-  this.size = this.originalsize - (neighbors - 1) * 15;
+  this.size = this.originalsize - (neighbors) * 30;
   this.$node.css({'width': this.size + 'px'});
   this.$node.css({'height': this.size + 'px'});
 };
